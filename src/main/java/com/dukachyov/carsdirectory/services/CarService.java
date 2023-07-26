@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +21,17 @@ public class CarService {
     }
 
     @Transactional
-    public void register(Car car) {
+    public void addCar(Car car) {
         carRepository.save(car);
     }
 
+    @Transactional
+    public void deleteCar(int id) {
+        carRepository.deleteById(id);
+    }
+
+    // Для валидации
+    public Optional<Car> findCarByRegistrationNumber(String regNumber) {
+        return carRepository.findCarByRegistrationNumber(regNumber);
+    }
 }
