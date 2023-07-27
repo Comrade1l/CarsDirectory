@@ -17,8 +17,18 @@ public class CarService {
     private final CarRepository carRepository;
 
     public List<Car> getAllCars() {
-        return carRepository.findAll();
+        return carRepository.findAllByOrderByRegistrationNumber();
     }
+
+    public Car getCar(int id) {
+        Optional<Car> foundCar = carRepository.findById(id);
+        return foundCar.orElse(null);
+    }
+
+//    public Car getCarByRegNumber(String regNumber) {
+//        Optional<Car> foundCar = carRepository.findCarByRegistrationNumber(regNumber);
+//        return foundCar.orElse(null);
+//    }
 
     @Transactional
     public void addCar(Car car) {
@@ -27,11 +37,16 @@ public class CarService {
 
     @Transactional
     public void deleteCar(int id) {
-        carRepository.deleteById(id);
+        carRepository.deleteCarById(id);
+    }
+
+    @Transactional
+    public void deleteCarByRegNumber(String regNumber) {
+        carRepository.deleteCarByRegistrationNumber(regNumber);
     }
 
     // Для валидации
-    public Optional<Car> findCarByRegistrationNumber(String regNumber) {
+    public Optional<Car> getCarByRegistrationNumber(String regNumber) {
         return carRepository.findCarByRegistrationNumber(regNumber);
     }
 }

@@ -23,7 +23,7 @@ public class CarValidator implements Validator {
 
         Car car = (Car) target;
 
-        if (carService.findCarByRegistrationNumber(car.getRegistrationNumber()).isPresent())
+        if (carService.getCarByRegistrationNumber(car.getRegistrationNumber()).isPresent())
             errors.rejectValue("registrationNumber", "",
                     "Машина с такими регистрационными номерами уже существует");
     }
