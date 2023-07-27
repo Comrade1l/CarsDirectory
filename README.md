@@ -22,7 +22,7 @@
 
 ## Руководство
 
-1. HTTP GET /cars - вовзращает список автомобилей
+1. HTTP GET /cars - вовзращает список автомобилей в порядке регистрационных номеров
   - ![image](https://github.com/Comrade1l/CarsDirectory/assets/110826937/8f63be38-2e6f-4d69-97cb-fff5af949d0b)
 2. HTTP GET /cars/{id} - возвращает конкретный автомобиль
   - ![image](https://github.com/Comrade1l/CarsDirectory/assets/110826937/8aa96762-6080-423f-99fc-a2769522face)
