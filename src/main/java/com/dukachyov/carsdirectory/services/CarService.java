@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,11 +26,6 @@ public class CarService {
         return foundCar.orElse(null);
     }
 
-//    public Car getCarByRegNumber(String regNumber) {
-//        Optional<Car> foundCar = carRepository.findCarByRegistrationNumber(regNumber);
-//        return foundCar.orElse(null);
-//    }
-
     @Transactional
     public void addCar(Car car) {
         carRepository.save(car);
@@ -48,5 +44,9 @@ public class CarService {
     // Для валидации
     public Optional<Car> getCarByRegistrationNumber(String regNumber) {
         return carRepository.findCarByRegistrationNumber(regNumber);
+    }
+
+    public List<Car> getAllCarsOrderByDate() {
+        return carRepository.findCarByOrderByCreatedAt();
     }
 }
